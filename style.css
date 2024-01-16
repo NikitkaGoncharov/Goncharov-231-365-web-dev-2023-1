@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+main{
+    margin: 0;
+    padding-bottom: 5%;
+}
+.tour{
+    width: 70%;
+    border: 0.5em solid black;
+
+}
+.table-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pag{
+    display: flex;
+    justify-content: center;
+}
+button{
+    width: 5%;
+}
+.advantages{
+    margin: 10%;
+}
+.font{
+    font-size: 3em;
+    color: black;
+    
+}
+.advantages-element{
+    text-align: center;
+}
