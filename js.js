@@ -83,7 +83,6 @@ function renderPagination() {
     
 }
 
-
 function getOrgers() {
     const url = new URL('routes', mainUrl);
     url.searchParams.set('api_key', '1ad2694f-6bd9-4ea9-a773-305f1dac2fc7');
@@ -106,7 +105,7 @@ function getOrgers() {
                 const option = document.createElement("option");
                 option.textContent = elem;
                 select.append(option);
-            };}//
+            };}
         renderOrders(data.slice(start, end));
         renderPagination();
     };
@@ -145,7 +144,6 @@ select.addEventListener('click', (event) => {
         });
     }
 });
-
 
 //*** 
 function splitMainObject(value) {
@@ -221,7 +219,7 @@ function addDataGuids(orders) {
     const gidButton = document.createElement('button')
     gidButton.classList.add('gidButton')
     gidButton.textContent = "Выбрать";
-    gidButton.addEventListener("click", event => modal(orders));
+    gidButton.addEventListener("click", event => modal(orders, roadName));
     gidButton.setAttribute("data-bs-toggle", "modal")
     gidButton.setAttribute("data-bs-target", "#exampleModal")
     tr.append(gidButton);
@@ -237,11 +235,32 @@ function modal(orders) {
     fio.textContent = `ФИО гида: ${orders.name}`;
 
     const nameRoad = document.querySelector('.roadname');
-    nameRoad.textContent = `Название маршрутв: ${orders.roadName}`;
+    nameRoad.textContent = `Название маршрута: ${roadName.textContent}`;
 
-    const cost = document.querySelector('.costroad');
-    cost.textContent = `Цена прогулки: ${orders.pricePerHour}₽`;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.getElementById('closeBtn');
+    const bookBtn = document.getElementById('bookBtn');
+    const notification = document.getElementById('notification');
+
+    closeBtn.addEventListener('click', function() {
+        showNotification('Заявка отменена');
+    });
+
+    bookBtn.addEventListener('click', function() {
+        showNotification('Заявка отправлена в личный кабинет');
+    });
+
+    function showNotification(message) {
+        notification.textContent = message;
+        notification.style.display = 'block';
+        setTimeout(function() {
+            notification.style.display = 'none';
+        }, 3000);
+    }
+});
+
 
 
 window.addEventListener('DOMContentLoaded', getOrgers);

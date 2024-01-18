@@ -45,7 +45,7 @@
     </nav>
   </header>
 
-
+  <div id="notification" class="notification"></div>
   
   <header>
     <nav class="navbar bg-body-tertiary">
@@ -92,7 +92,14 @@
         </div>
 
       
-
+        <!--карта-->
+        
+        <div class=" d-flex flex-column content-card tab-content pt-3 px-4 pb-4 pt-sm-4 px-sm-5 pb-sm-5" id="v-pills-tabContent">
+          <div class="tab-pane fade show active"  id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+             <span class="fs-1 bold-title">Карта</span>
+             <div class="col tab-card mt-3 overflow-hidden" id="map"></div>
+           </div>
+         </div>
   
     
 
@@ -182,8 +189,8 @@
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-              <button type="button" class="btn btn-primary">Забронировать</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Закрыть</button>
+              <button type="button" class="btn btn-primary" id="bookBtn">Забронировать</button>
             </div>
           </div>
         </div>
@@ -194,7 +201,7 @@
 
   </main>
   <footer style="background-color: black; color: aliceblue;">
-      <div class="conteiner" id="kontact">
+      <div class="conteiner">
           <div class="row">
               <div class="col-md-4 col-12 hhh">
                   <h4>Время работы</h4>
@@ -227,6 +234,9 @@
   </footer>
 
   <script src="js.js"></script>
+  <script src="https://api-maps.yandex.ru/2.1/?load=package.standard&amp;lang=ru-RU&amp;apikey=260bf5a8-6cb9-425e-b9de-6d568d3f2097"
+    type="text/javascript"></script>
+  <script src="map.js" type="text/javascript"></script>
 
 </body>
 </html>
