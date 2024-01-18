@@ -48,22 +48,11 @@ function init() {
         reverseGeocoding: true,
         // Зададим виды маршрутизации, которые будут доступны пользователям для выбора.
         types: {  pedestrian: true }
-    });
-
-
-    // Создаем кнопку, с помощью которой пользователи смогут менять местами начальную и конечную точки маршрута.
-    var switchPointsButton = new ymaps.control.Button({
-        data: {content: "Поменять местами", title: "Поменять точки местами"},
-        options: {selectOnClick: false, maxWidth: 160}
-    });
-
-    
+    });  
    
 
     // Объявляем обработчик для кнопки.
     switchPointsButton.events.add('click', function () {
-        // Меняет местами начальную и конечную точки маршрута.
-        control.routePanel.switchPoints(); 
     });
     myMap.controls.add(switchPointsButton);
 }
