@@ -95,9 +95,13 @@ function getOrgers() {
         totalPage = Math.ceil(data.length / perPage);
         const start = currentPage * perPage - perPage;
         const end = currentPage * perPage;
-        //Не наше
+        //***
         for (const order of data) {
             const select = document.querySelector('.form-select');
+            select.addEventListener('change', (event) => {
+                const selectedObject = event.target.value;  // Получаем выбранный объект
+                filterRoadsByObject(selectedObject);        // Вызываем функцию для фильтрации маршрутов по выбранному объекту
+            });
             for (const elem of splitMainObject(order.mainObject)) {
                 const option = document.createElement("option");
                 option.textContent = elem;
@@ -108,9 +112,41 @@ function getOrgers() {
     };
     //***
     xhr.send();
-
-
 }
+function filterRoadsByObject(selectedObject) {
+    const rows = document.querySelectorAll('.tour.road tbody tr');  // Получаем все строки таблицы маршрутов
+    rows.forEach((row) => {
+        if (selectedObject === "Основной объект") {
+            row.style.display = '';  // Показываем все строки, если выбрано значение "Основной объект"
+        } else {
+            if (row.textContent.includes(selectedObject)) {
+                row.style.display = '';  // Показываем строку, если объект соответствует выбранному
+            } else {
+                row.style.display = 'none';  // Скрываем строку, если объект не соответствует выбранному
+            }
+        }
+    });
+}
+
+// Добавим сброс фильтра при выборе "Основной объект"
+const select = document.querySelector('.form-select');
+select.addEventListener('change', (event) => {
+    const selectedObject = event.target.value;  // Получаем выбранный объект
+    filterRoadsByObject(selectedObject);        // Вызываем функцию для фильтрации маршрутов по выбранному объекту
+});
+
+// Добавим обработку события, чтобы сбросить фильтр при выборе "Основной объект"
+select.addEventListener('click', (event) => {
+    const selectedObject = event.target.value;  // Получаем выбранный объект
+    if (selectedObject === "Основной объект") {
+        const rows = document.querySelectorAll('.tour.road tbody tr');  // Получаем все строки таблицы маршрутов
+        rows.forEach((row) => {
+            row.style.display = '';  // Показываем все строки
+        });
+    }
+});
+
+
 //*** 
 function splitMainObject(value) {
     console.log(value.match(/,/g)?.length)
@@ -128,7 +164,7 @@ function searchTable() {
     const filter = input.value.toUpperCase();
     const rows = tbody.getElementsByTagName('tr');
     for (let row of rows) {
-        let nameColumn = row.getElementsByTagName('td')[0]; // Предполагаем, что название таблицы находится в первой колонке
+        let nameColumn = row.getElementsByTagName('td')[0];
         if (nameColumn) {
             let textValue = nameColumn.textContent || nameColumn.innerText;
             if (textValue.toUpperCase().indexOf(filter) > -1) {
