@@ -239,28 +239,6 @@ function modal(orders) {
 
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const closeBtn = document.getElementById('closeBtn');
-    const bookBtn = document.getElementById('bookBtn');
-    const notification = document.getElementById('notification');
-
-    closeBtn.addEventListener('click', function() {
-        showNotification('Заявка отменена');
-    });
-
-    bookBtn.addEventListener('click', function() {
-        showNotification('Заявка отправлена в личный кабинет');
-    });
-
-    function showNotification(message) {
-        notification.textContent = message;
-        notification.style.display = 'block';
-        setTimeout(function() {
-            notification.style.display = 'none';
-        }, 3000);
-    }
-});
-
 
 
 window.addEventListener('DOMContentLoaded', getOrgers);

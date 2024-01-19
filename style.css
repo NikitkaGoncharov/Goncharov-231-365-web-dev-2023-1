@@ -3,10 +3,36 @@
     padding: 0;
 }
 
-body{
-    background-color: rgba(255, 215, 16, 0.594);
+header {
+    background-color: black; /* Немного улучшеем контраст с навигацией */
 }
+  
+nav {
+    padding: 0 20px;
+    justify-content: space-between; /* Распределение элементов по ширине */
+}
+
+nav a:hover {
+    color: #ff5733; /* Изменение цвета при наведении */
+  }
+
+.navbar-brand {
+    display: block; /* Отображение в виде блока */
+    margin: 0 auto; /* Устанавливаем автоматичесные отступы слева и справа */
+    width: fit-content; /* Чтобы блок занимал ширину содержимого */
+    text-align: center; /* Выравнивание текста по центру */
+}
+.tour tr:nth-child(odd) { 
+    background-color: #f2f2f2; /* Различная окраска строк в таблице */
+}
+
+.main-content {
+    padding: 20px; /* Улучшим отступ, чтобы контент не был прижат к краям */
+  }
 body{
+    background-color: rgb(27, 25, 25);
+    color: white;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -24,19 +50,52 @@ main{
     padding: 1%;
     
 }
+
+h2 {
+    display:inline-block;
+    margin-top: 1%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
 .table-center{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+.tour.road th {
+    text-align: center; /* Выравнивание по центру */
+  }
+
+tbody td {
+    color: black;
+    border: 1px solid black;
+    padding: 8px;
+  }
+
+thead{
+    color:black;
+}
+
 .pag{
     display: flex;
     justify-content: center;
 }
 
 .advantages{
-    margin: 10%;
+    color: azure;
+    margin: 0% 2% 5% 2%;
+    background-color: rgba(207, 84, 22, 0.803);
+    border-radius: 20px;
 }
+
+.advantages-element{
+    margin-top: 5%;
+}
+
 .font{
     font-size: 3em;
     color: black;
@@ -46,11 +105,17 @@ main{
     text-align: center;
 }
 .changeBtn{
+
     width: 100px;
     height: 30px;
-    background-color: blueviolet;
-    color: white;
+    background-color: orange; /* Сделаем кнопки в четвертом столбце оранжевыми */
+    color: white; /* Чтобы текст на них лучше читался */
+    cursor: pointer; /* Сделаем курсор указателем при наведении на кнопку */
 }
+
+.changeBtn:hover {
+    background-color: darkorange; /* Темно-оранжевый при наведении */
+  }
 
 .road{
     background-color: aliceblue;
@@ -77,4 +142,5 @@ main{
 
 footer{
     padding: 5%;
+    color: #fff;
 }
